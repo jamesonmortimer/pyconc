@@ -1,0 +1,13 @@
+# PyConc - Python Concurrency Examples
+# No external dependencies required - uses only Python standard library
+
+# For development and testing (optional)
+pytest>=6.0.0
+pytest-cov>=2.10.0
+black>=21.0.0
+flake8>=3.8.0
+mypy>=0.800
+
+# For future enhancements (when needed)
+# requests>=2.25.0
+# asyncio-mqtt>=0.5.0 
