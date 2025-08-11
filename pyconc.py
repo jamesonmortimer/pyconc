@@ -13,6 +13,7 @@ A command-line tool to demonstrate various concurrency concepts:
 """
 
 import argparse
+from typing import Any
 
 # Import example classes from their respective files in the examples folder
 from examples.deadlock import (
@@ -41,7 +42,7 @@ from examples.threadpool import (
 )
 
 
-def main():
+def main() -> int:
     """Main function to handle command line arguments and run examples."""
     parser = argparse.ArgumentParser(
         description="Python Concurrency Examples",
@@ -107,53 +108,53 @@ Examples:
 
     try:
         if args.example == "deadlock":
-            example = DeadlockExample()
-            example.run(args.duration)
+            deadlock_example: Any = DeadlockExample()
+            deadlock_example.run(args.duration)
         elif args.example == "deadlock-fix-resource-ordering":
-            example = DeadlockFixResourceOrdering()
-            example.run(args.duration)
+            resource_ordering_example: Any = DeadlockFixResourceOrdering()
+            resource_ordering_example.run(args.duration)
         elif args.example == "deadlock-fix-timeout":
-            example = DeadlockFixTimeout()
-            example.run(args.duration)
+            timeout_example: Any = DeadlockFixTimeout()
+            timeout_example.run(args.duration)
         elif args.example == "deadlock-fix-asymmetric-behavior":
-            example = DeadlockFixAsymmetricBehavior()
-            example.run(args.duration)
+            asymmetric_example: Any = DeadlockFixAsymmetricBehavior()
+            asymmetric_example.run(args.duration)
         elif args.example == "deadlock-fix-waiter":
-            example = DeadlockFixWaiter()
-            example.run(args.duration)
+            waiter_example: Any = DeadlockFixWaiter()
+            waiter_example.run(args.duration)
         elif args.example == "livelock":
-            example = LivelockExample()
-            example.run(args.duration)
+            livelock_example: Any = LivelockExample()
+            livelock_example.run(args.duration)
         elif args.example == "livelock-fix-random-backoff":
-            example = LivelockFixRandomBackoff()
-            example.run(args.duration)
+            backoff_example: Any = LivelockFixRandomBackoff()
+            backoff_example.run(args.duration)
         elif args.example == "livelock-fix-priority":
-            example = LivelockFixPriority()
-            example.run(args.duration)
+            priority_example: Any = LivelockFixPriority()
+            priority_example.run(args.duration)
         elif args.example == "starvation":
-            example = StarvationExample()
-            example.run(args.duration)
+            starvation_example: Any = StarvationExample()
+            starvation_example.run(args.duration)
         elif args.example == "starvation-fix-fair-scheduling":
-            example = StarvationFixFairScheduling()
-            example.run(args.duration)
+            fair_scheduling_example: Any = StarvationFixFairScheduling()
+            fair_scheduling_example.run(args.duration)
         elif args.example == "starvation-fix-aging":
-            example = StarvationFixAging()
-            example.run(args.duration)
+            aging_example: Any = StarvationFixAging()
+            aging_example.run(args.duration)
         elif args.example == "threadpool":
-            example = ThreadPoolExample()
-            example.run(args.duration)
+            threadpool_example: Any = ThreadPoolExample()
+            threadpool_example.run(args.duration)
         elif args.example == "threadpool-polling-periodic":
-            example = ThreadPoolPollingPeriodic()
-            example.run(args.duration)
+            periodic_example: Any = ThreadPoolPollingPeriodic()
+            periodic_example.run(args.duration)
         elif args.example == "threadpool-polling-adaptive":
-            example = ThreadPoolPollingAdaptive()
-            example.run(args.duration)
+            adaptive_example: Any = ThreadPoolPollingAdaptive()
+            adaptive_example.run(args.duration)
         elif args.example == "threadpool-polling-event-driven":
-            example = ThreadPoolPollingEventDriven()
-            example.run(args.duration)
+            event_driven_example: Any = ThreadPoolPollingEventDriven()
+            event_driven_example.run(args.duration)
         elif args.example == "threadpool-polling-batch":
-            example = ThreadPoolPollingBatch()
-            example.run(args.duration)
+            batch_example: Any = ThreadPoolPollingBatch()
+            batch_example.run(args.duration)
 
     except KeyboardInterrupt:
         print("\n\nInterrupted by user. Exiting...")
