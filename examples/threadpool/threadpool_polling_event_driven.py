@@ -60,9 +60,7 @@ class ThreadPoolPollingEventDriven:
 
             self.event_counters[event_type] += 1
 
-            print(
-                f"Event Producer: Created {event_type} priority event {event_data['id']}"
-            )
+            print(f"Event Producer: Created {event_type} priority event {event_data['id']}")
 
             # Random delay between events
             time.sleep(random.uniform(0.1, 0.5))
@@ -80,23 +78,17 @@ class ThreadPoolPollingEventDriven:
             try:
                 # Try high priority first (non-blocking)
                 event = self.high_priority_queue.get_nowait()
-                print(
-                    f"Event Consumer {worker_id}: Processing HIGH priority event {event['id']}"
-                )
+                print(f"Event Consumer {worker_id}: Processing HIGH priority event {event['id']}")
             except queue.Empty:
                 try:
                     # Try normal priority (non-blocking)
                     event = self.normal_priority_queue.get_nowait()
-                    print(
-                        f"Event Consumer {worker_id}: Processing NORMAL priority event {event['id']}"
-                    )
+                    print(f"Event Consumer {worker_id}: Processing NORMAL priority event {event['id']}")
                 except queue.Empty:
                     try:
                         # Try low priority (non-blocking)
                         event = self.low_priority_queue.get_nowait()
-                        print(
-                            f"Event Consumer {worker_id}: Processing LOW priority event {event['id']}"
-                        )
+                        print(f"Event Consumer {worker_id}: Processing LOW priority event {event['id']}")
                     except queue.Empty:
                         # No events available, wait a bit
                         time.sleep(0.1)
@@ -131,19 +123,14 @@ class ThreadPoolPollingEventDriven:
         time.sleep(process_time)
 
         actual_time = time.time() - start_time
-        print(
-            f"Event Consumer {worker_id}: Completed {event['type']} priority event {event['id']} "
-            f"in {actual_time:.3f}s"
-        )
+        print(f"Event Consumer {worker_id}: Completed {event['type']} priority event {event['id']} " f"in {actual_time:.3f}s")
 
     def run(self, duration: int = 5):
         """Run the event-driven polling example."""
-        print(f"\n=== THREADPOOL: Event-Driven Polling ===")
+        print("\n=== THREADPOOL: Event-Driven Polling ===")
         print(f"Running for {duration} seconds...")
         print(f"Using {self.num_workers} workers for event processing\n")
-        print(
-            "Events are generated with different priorities and processed accordingly.\n"
-        )
+        print("Events are generated with different priorities and processed accordingly.\n")
 
         # Start event producer
         self.producer_thread = threading.Thread(target=self.event_producer)
@@ -175,7 +162,7 @@ class ThreadPoolPollingEventDriven:
         self.executor.shutdown(wait=True)
 
         # Print final statistics
-        print(f"\nFinal Event Counts:")
+        print("\nFinal Event Counts:")
         print(f"  High Priority: {self.event_counters['high']}")
         print(f"  Normal Priority: {self.event_counters['normal']}")
         print(f"  Low Priority: {self.event_counters['low']}")

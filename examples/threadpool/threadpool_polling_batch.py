@@ -50,9 +50,7 @@ class ThreadPoolPollingBatch:
             }
 
             self.data_queue.put(data_item)
-            print(
-                f"Data Collector: Collected item {item_id} (value: {data_item['value']})"
-            )
+            print(f"Data Collector: Collected item {item_id} (value: {data_item['value']})")
 
             item_id += 1
 
@@ -73,9 +71,7 @@ class ThreadPoolPollingBatch:
             while len(batch) < self.batch_size:
                 try:
                     # Wait for items with timeout
-                    remaining_time = self.max_wait_time - (
-                        time.time() - batch_start_time
-                    )
+                    remaining_time = self.max_wait_time - (time.time() - batch_start_time)
                     if remaining_time <= 0:
                         break
 
@@ -132,19 +128,13 @@ class ThreadPoolPollingBatch:
                 # Try to get an item for individual processing
                 item = self.data_queue.get(timeout=0.2)
 
-                print(
-                    f"Individual Processor {worker_id}: Processing item {item['id']} "
-                    f"(value: {item['value']})"
-                )
+                print(f"Individual Processor {worker_id}: Processing item {item['id']} " f"(value: {item['value']})")
 
                 # Simulate individual processing
                 process_time = 0.05 + (item["value"] * 0.001)
                 time.sleep(process_time)
 
-                print(
-                    f"Individual Processor {worker_id}: Completed item {item['id']} "
-                    f"in {process_time:.3f}s"
-                )
+                print(f"Individual Processor {worker_id}: Completed item {item['id']} " f"in {process_time:.3f}s")
 
                 # Mark as done
                 self.data_queue.task_done()
@@ -157,7 +147,7 @@ class ThreadPoolPollingBatch:
 
     def run(self, duration: int = 5):
         """Run the batch polling example."""
-        print(f"\n=== THREADPOOL: Batch Polling ===")
+        print("\n=== THREADPOOL: Batch Polling ===")
         print(f"Running for {duration} seconds...")
         print(f"Using {self.num_workers} workers for batch processing\n")
         print(f"Batch size: {self.batch_size}, Max wait time: {self.max_wait_time}s")
@@ -199,12 +189,10 @@ class ThreadPoolPollingBatch:
         self.executor.shutdown(wait=True)
 
         # Print final statistics
-        print(f"\nFinal Statistics:")
+        print("\nFinal Statistics:")
         print(f"  Batches Processed: {self.batches_processed}")
         print(f"  Total Items Processed: {self.total_items_processed}")
-        print(
-            f"  Average Batch Size: {self.total_items_processed / max(1, self.batches_processed):.1f}"
-        )
+        print(f"  Average Batch Size: {self.total_items_processed / max(1, self.batches_processed):.1f}")
 
         print("Batch polling example completed.\n")
 

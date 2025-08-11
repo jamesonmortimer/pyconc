@@ -24,11 +24,11 @@ setup(
     description="Python Concurrency Examples - A comprehensive collection of concurrency problems, solutions, and patterns",
     long_description=read_readme(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/pyconc",
+    url="https://github.com/jamesonmortimer/pyconc",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/pyconc/issues",
-        "Source": "https://github.com/yourusername/pyconc",
-        "Documentation": "https://github.com/yourusername/pyconc#readme",
+        "Bug Reports": "https://github.com/jamesonmortimer/pyconc/issues",
+        "Source": "https://github.com/jamesonmortimer/pyconc",
+        "Documentation": "https://github.com/jamesonmortimer/pyconc#readme",
     },
     packages=find_packages(),
     classifiers=[

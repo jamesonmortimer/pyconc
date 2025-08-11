@@ -39,9 +39,7 @@ class StarvationFixAging:
                 for worker_id in range(self.num_workers):
                     if self.worker_wait_times[worker_id] > 0:
                         self.worker_priorities[worker_id] += 1
-                        print(
-                            f"Aging Scheduler: Worker {worker_id} priority increased to {self.worker_priorities[worker_id]}"
-                        )
+                        print(f"Aging Scheduler: Worker {worker_id} priority increased to {self.worker_priorities[worker_id]}")
 
             time.sleep(0.5)  # Age every 0.5 seconds
 
@@ -90,7 +88,7 @@ class StarvationFixAging:
 
     def run(self, duration: int = 5):
         """Run the aging mechanism fix example."""
-        print(f"\n=== STARVATION FIX: Aging Mechanism ===")
+        print("\n=== STARVATION FIX: Aging Mechanism ===")
         print(f"Running for {duration} seconds...")
         print("This should NOT result in starvation due to aging mechanism!\n")
         print("Worker priorities increase over time to ensure fair access.\n")

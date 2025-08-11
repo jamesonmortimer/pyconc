@@ -4,7 +4,6 @@ ThreadPool Example - Periodic Polling
 Demonstrates using ThreadPoolExecutor for periodic task execution.
 """
 
-import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
@@ -31,9 +30,7 @@ class ThreadPoolPollingPeriodic:
             time.sleep(work_time)
 
             current_time = datetime.now().strftime("%H:%M:%S.%f")[:-3]
-            print(
-                f"Periodic Task {task_id}: Executed at {current_time} (took {work_time:.3f}s)"
-            )
+            print(f"Periodic Task {task_id}: Executed at {current_time} (took {work_time:.3f}s)")
 
             # Calculate sleep time to maintain interval
             elapsed = time.time() - start_time
@@ -46,7 +43,7 @@ class ThreadPoolPollingPeriodic:
 
     def run(self, duration: int = 5):
         """Run the periodic polling example."""
-        print(f"\n=== THREADPOOL: Periodic Polling ===")
+        print("\n=== THREADPOOL: Periodic Polling ===")
         print(f"Running for {duration} seconds...")
         print(f"Using {self.num_workers} workers for periodic tasks\n")
 

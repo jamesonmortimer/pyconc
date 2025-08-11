@@ -71,26 +71,16 @@ class ThreadPoolPollingAdaptive:
 
             # Adapt interval based on system load and response time
             if load > 0.7:  # High load - poll less frequently
-                current_interval = min(
-                    current_interval * (1 + self.adaptation_factor), self.max_interval
-                )
-                print(
-                    f"Adaptive Task {task_id}: High load detected, increasing interval to {current_interval:.2f}s"
-                )
+                current_interval = min(current_interval * (1 + self.adaptation_factor), self.max_interval)
+                print(f"Adaptive Task {task_id}: High load detected, increasing interval to {current_interval:.2f}s")
             elif load < 0.3:  # Low load - poll more frequently
-                current_interval = max(
-                    current_interval * (1 - self.adaptation_factor), self.min_interval
-                )
-                print(
-                    f"Adaptive Task {task_id}: Low load detected, decreasing interval to {current_interval:.2f}s"
-                )
+                current_interval = max(current_interval * (1 - self.adaptation_factor), self.min_interval)
+                print(f"Adaptive Task {task_id}: Low load detected, decreasing interval to {current_interval:.2f}s")
 
             # Also adapt based on response time
             if response_time > current_interval * 0.8:  # Work taking too long
                 current_interval = min(current_interval * 1.2, self.max_interval)
-                print(
-                    f"Adaptive Task {task_id}: Slow response, increasing interval to {current_interval:.2f}s"
-                )
+                print(f"Adaptive Task {task_id}: Slow response, increasing interval to {current_interval:.2f}s")
 
             time.sleep(current_interval)
 
@@ -98,7 +88,7 @@ class ThreadPoolPollingAdaptive:
 
     def run(self, duration: int = 5):
         """Run the adaptive polling example."""
-        print(f"\n=== THREADPOOL: Adaptive Polling ===")
+        print("\n=== THREADPOOL: Adaptive Polling ===")
         print(f"Running for {duration} seconds...")
         print(f"Using {self.num_workers} workers for adaptive polling\n")
         print("Polling intervals will adapt based on system load and response times.\n")

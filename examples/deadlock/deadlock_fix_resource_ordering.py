@@ -32,9 +32,7 @@ class DeadlockFixResourceOrdering:
             first_fork = min(left_fork, right_fork)
             second_fork = max(left_fork, right_fork)
 
-            print(
-                f"Philosopher {philosopher_id} picking up fork {first_fork} first (lower-numbered)"
-            )
+            print(f"Philosopher {philosopher_id} picking up fork {first_fork} first (lower-numbered)")
             self.forks[first_fork].acquire()
 
             print(f"Philosopher {philosopher_id} picking up fork {second_fork} second")
@@ -51,11 +49,9 @@ class DeadlockFixResourceOrdering:
 
     def run(self, duration: int = 5):
         """Run the resource ordering fix example."""
-        print(f"\n=== DEADLOCK FIX: Resource Ordering ===")
+        print("\n=== DEADLOCK FIX: Resource Ordering ===")
         print(f"Running for {duration} seconds...")
-        print(
-            "This should NOT result in deadlock due to consistent resource ordering!\n"
-        )
+        print("This should NOT result in deadlock due to consistent resource ordering!\n")
 
         # Start philosophers
         for i in range(self.num_philosophers):

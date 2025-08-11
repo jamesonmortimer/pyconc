@@ -49,10 +49,10 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/pyconc"
-Documentation = "https://github.com/yourusername/pyconc#readme"
-Repository = "https://github.com/yourusername/pyconc"
-"Bug Tracker" = "https://github.com/yourusername/pyconc/issues"
+Homepage = "https://github.com/jamesonmortimer/pyconc"
+Documentation = "https://github.com/jamesonmortimer/pyconc#readme"
+Repository = "https://github.com/jamesonmortimer/pyconc"
+"Bug Tracker" = "https://github.com/jamesonmortimer/pyconc/issues"
 
 [project.scripts]
 pyconc = "pyconc:main"
@@ -62,7 +62,7 @@ where = ["."]
 include = ["examples*"]
 
 [tool.black]
-line-length = 88
+line-length = 150
 target-version = ['py38']
 include = '\.pyi?$'
 extend-exclude = '''
@@ -108,6 +108,10 @@ exclude_lines = [
     "class .*\\bProtocol\\):",
     "@(abc\\.)?abstractmethod",
 ]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
 
 [tool.mypy]
 python_version = "3.8"

@@ -33,16 +33,16 @@ install-dev:
 
 # Run all tests
 test:
-	python -m pytest tests/ -v
+	python3 -m pytest tests/ -v
 
 # Run tests with coverage
 test-coverage:
-	python -m pytest tests/ --cov=examples --cov-report=html --cov-report=term-missing
+	python3 -m pytest tests/ --cov=examples --cov-report=html --cov-report=term-missing
 
 # Run linting checks
 lint:
-	flake8 examples/ pyconc.py tests/
-	mypy examples/ pyconc.py
+	python3 -m flake8 examples/ pyconc.py tests/
+	python3 -m mypy examples/ pyconc.py
 
 # Format code
 format:

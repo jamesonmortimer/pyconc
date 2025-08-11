@@ -40,14 +40,10 @@ class DeadlockFixAsymmetricBehavior:
                 second_fork = right_fork
                 order = "left-then-right"
 
-            print(
-                f"Philosopher {philosopher_id} ({order}) picking up fork {first_fork} first"
-            )
+            print(f"Philosopher {philosopher_id} ({order}) picking up fork {first_fork} first")
             self.forks[first_fork].acquire()
 
-            print(
-                f"Philosopher {philosopher_id} ({order}) picking up fork {second_fork} second"
-            )
+            print(f"Philosopher {philosopher_id} ({order}) picking up fork {second_fork} second")
             self.forks[second_fork].acquire()
 
             print(f"Philosopher {philosopher_id} eating...")
@@ -61,11 +57,9 @@ class DeadlockFixAsymmetricBehavior:
 
     def run(self, duration: int = 5):
         """Run the asymmetric behavior fix example."""
-        print(f"\n=== DEADLOCK FIX: Asymmetric Behavior ===")
+        print("\n=== DEADLOCK FIX: Asymmetric Behavior ===")
         print(f"Running for {duration} seconds...")
-        print(
-            "This should NOT result in deadlock due to asymmetric fork picking order!\n"
-        )
+        print("This should NOT result in deadlock due to asymmetric fork picking order!\n")
         print("Even philosophers: right fork first, then left fork")
         print("Odd philosophers: left fork first, then right fork\n")
 

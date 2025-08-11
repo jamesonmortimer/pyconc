@@ -32,18 +32,14 @@ class DeadlockFixTimeout:
             while self.running:
                 # Try to get left fork with timeout
                 if not self.forks[left_fork].acquire(timeout=0.1):
-                    print(
-                        f"Philosopher {philosopher_id}: Left fork {left_fork} not available, retrying..."
-                    )
+                    print(f"Philosopher {philosopher_id}: Left fork {left_fork} not " f"available, retrying...")
                     continue
 
                 print(f"Philosopher {philosopher_id} got left fork {left_fork}")
 
                 # Try to get right fork with timeout
                 if not self.forks[right_fork].acquire(timeout=0.1):
-                    print(
-                        f"Philosopher {philosopher_id}: Right fork {right_fork} not available, releasing left fork and retrying..."
-                    )
+                    print(f"Philosopher {philosopher_id}: Right fork {right_fork} not " f"available, releasing left fork and retrying...")
                     self.forks[left_fork].release()
                     time.sleep(0.05)  # Small delay before retry
                     continue
@@ -65,7 +61,7 @@ class DeadlockFixTimeout:
 
     def run(self, duration: int = 5):
         """Run the timeout fix example."""
-        print(f"\n=== DEADLOCK FIX: Timeout Mechanism ===")
+        print("\n=== DEADLOCK FIX: Timeout Mechanism ===")
         print(f"Running for {duration} seconds...")
         print("This should NOT result in deadlock due to timeout and retry logic!\n")
 

@@ -32,9 +32,7 @@ class LivelockExample:
                     print("Worker 1: Released both locks")
                     break
                 else:
-                    print(
-                        "Worker 1: Couldn't get lock2, releasing lock1 and retrying..."
-                    )
+                    print("Worker 1: Couldn't get lock2, releasing lock1 and retrying...")
                     self.lock1.release()
                     time.sleep(0.1)  # Be polite, wait a bit
             time.sleep(0.05)
@@ -55,16 +53,14 @@ class LivelockExample:
                     print("Worker 2: Released both locks")
                     break
                 else:
-                    print(
-                        "Worker 2: Couldn't get lock1, releasing lock2 and retrying..."
-                    )
+                    print("Worker 2: Couldn't get lock1, releasing lock2 and retrying...")
                     self.lock2.release()
                     time.sleep(0.1)  # Be polite, wait a bit
             time.sleep(0.05)
 
     def run(self, duration: int = 10):
         """Run the livelock example."""
-        print(f"\n=== LIVELOCK EXAMPLE (Too Polite Workers) ===")
+        print("\n=== LIVELOCK EXAMPLE (Too Polite Workers) ===")
         print(f"Running for {duration} seconds...")
         print("Workers will keep being polite and may not make progress!\n")
 

@@ -46,7 +46,7 @@ class DeadlockExample:
 
     def run(self, duration: int = 5):
         """Run the deadlock example for specified duration."""
-        print(f"\n=== DEADLOCK EXAMPLE (Dining Philosophers) ===")
+        print("\n=== DEADLOCK EXAMPLE (Dining Philosophers) ===")
         print(f"Running for {duration} seconds...")
         print("This will likely result in deadlock!\n")
 

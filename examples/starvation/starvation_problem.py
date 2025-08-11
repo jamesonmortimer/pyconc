@@ -48,7 +48,7 @@ class StarvationExample:
 
     def run(self, duration: int = 8):
         """Run the starvation example."""
-        print(f"\n=== STARVATION EXAMPLE (Resource Starvation) ===")
+        print("\n=== STARVATION EXAMPLE (Resource Starvation) ===")
         print(f"Running for {duration} seconds...")
         print("High priority workers may starve low priority ones!\n")
 

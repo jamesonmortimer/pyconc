@@ -12,7 +12,8 @@ import concurrent.futures
 class ThreadPoolExample:
     """Demonstrates ThreadPoolExecutor usage."""
 
-    def __init__(self):
+    def __init__(self, num_workers: int = 3):
+        self.num_workers = num_workers
         self.results = []
         self.lock = threading.Lock()
 
@@ -30,7 +31,7 @@ class ThreadPoolExample:
 
     def run(self, duration: int = 5):
         """Run the threadpool example."""
-        print(f"\n=== THREADPOOL EXAMPLE (ThreadPoolExecutor) ===")
+        print("\n=== THREADPOOL EXAMPLE (ThreadPoolExecutor) ===")
         print(f"Running for {duration} seconds...")
         print("Demonstrating various threadpool operations!\n")
 

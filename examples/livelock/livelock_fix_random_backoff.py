@@ -37,9 +37,7 @@ class LivelockFixRandomBackoff:
                     self.lock2.release()
                     self.lock1.release()
                 else:
-                    print(
-                        f"Worker {worker_id}: Couldn't get lock2, releasing lock1 and retrying..."
-                    )
+                    print(f"Worker {worker_id}: Couldn't get lock2, releasing lock1 and retrying...")
                     self.lock1.release()
 
                     # FIX: Add random backoff to break the polite loop
@@ -56,7 +54,7 @@ class LivelockFixRandomBackoff:
 
     def run(self, duration: int = 5):
         """Run the random backoff fix example."""
-        print(f"\n=== LIVELOCK FIX: Random Backoff ===")
+        print("\n=== LIVELOCK FIX: Random Backoff ===")
         print(f"Running for {duration} seconds...")
         print("This should NOT result in livelock due to random backoff!\n")
 

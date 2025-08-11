@@ -6,7 +6,6 @@ Fixes deadlock by using a central waiter to coordinate fork allocation.
 
 import threading
 import time
-import queue
 
 
 class DeadlockFixWaiter:
@@ -24,17 +23,11 @@ class DeadlockFixWaiter:
 
     def can_eat(self, philosopher_id: int):
         """Check if philosopher can eat (has access to both forks)."""
-        left_fork = philosopher_id
-        right_fork = (philosopher_id + 1) % self.num_philosophers
-
         # Check if adjacent philosophers are eating
         left_philosopher = (philosopher_id - 1) % self.num_philosophers
         right_philosopher = (philosopher_id + 1) % self.num_philosophers
 
-        return (
-            left_philosopher not in self.eating_philosophers
-            and right_philosopher not in self.eating_philosophers
-        )
+        return left_philosopher not in self.eating_philosophers and right_philosopher not in self.eating_philosophers
 
     def philosopher(self, philosopher_id: int):
         """Philosopher function that avoids deadlock through waiter coordination."""
@@ -56,9 +49,7 @@ class DeadlockFixWaiter:
                         print(f"Philosopher {philosopher_id}: Waiter approved eating")
                         break
                     else:
-                        print(
-                            f"Philosopher {philosopher_id}: Waiter says wait, adjacent philosophers are eating"
-                        )
+                        print(f"Philosopher {philosopher_id}: Waiter says wait, " f"adjacent philosophers are eating")
 
                 # Wait a bit before asking waiter again
                 time.sleep(0.1)
@@ -89,10 +80,10 @@ class DeadlockFixWaiter:
 
     def run(self, duration: int = 5):
         """Run the waiter fix example."""
-        print(f"\n=== DEADLOCK FIX: Waiter Solution ===")
+        print("\n=== DEADLOCK FIX: Waiter Solution ===")
         print(f"Running for {duration} seconds...")
-        print("This should NOT result in deadlock due to waiter coordination!\n")
-        print("A central waiter ensures no adjacent philosophers eat simultaneously.\n")
+        print("This should NOT result in deadlock due to waiter coordination!")
+        print("A central waiter ensures no adjacent philosophers eat simultaneously.")
 
         # Start philosophers
         for i in range(self.num_philosophers):

@@ -85,7 +85,7 @@ class StarvationFixFairScheduling:
 
     def run(self, duration: int = 5):
         """Run the fair scheduling fix example."""
-        print(f"\n=== STARVATION FIX: Fair Scheduling ===")
+        print("\n=== STARVATION FIX: Fair Scheduling ===")
         print(f"Running for {duration} seconds...")
         print("This should NOT result in starvation due to fair scheduling!\n")
         print("A fair scheduler ensures all workers get equal access to resources.\n")
